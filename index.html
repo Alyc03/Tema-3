@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema3</title>
+</head>
+<body>
+    <p>
+        <input type="text" id="prod" placeholder="Producator"><br><br>
+        <input type="text" id="os" placeholder="OS instalat"><br><br>
+        <input type="text" id="model" placeholder="Model Procesor"><br><br>
+        <input type="number" id="fabProcesor" placeholder="An fabricatie procesor"><br><br>
+        <input type="number" id="pretProcesor" placeholder="Pret procesor"><br><br>
+        <input type="number" id="memorieRam" placeholder="Memorie ram"><br><br>
+        <input type="number" id="fabMemorie" placeholder="An fabricatie memorie"><br><br>
+        <input type="number" id="pretMemorie" placeholder="Pret memorie"><br><br>
+        <input type="number" id="rezolutieDisplay" placeholder="Rezolutie display"><br><br>
+        <input type="number" id="fabRezolutie" placeholder="An fabricatie rezolutie"><br><br>
+        <input type="number" id="pretRezolutie" placeholder="Pret rezolutie"><br><br>
+    </p>
+    <p id="test"> </p>
+    <button id="buton_salveaza" onclick="laptop.salveaza_laptop()">Salveaza</button>
+    <button id="buton_afiseaza"  onclick="afiseaza()">Afiseaza!</button>
+    <script>
+   function afiseaza(){
+    document.getElementById("test").innerHTML =
+    "Producator:" + laptop.producator + '<br>' + 'OS instalat:' + laptop.os_instalat + '<br>' + 'Model procesor:' + laptop.model_procesor + '<br>' +
+    'An fabricatie procesor:' + laptop.an_fabricatie_procesor + '<br>' + 'Pret procesor:' + laptop.pret_procesor + 'RON' + '<br>' + 'Memorie ram:' + laptop.memorie_ram + 'GB' + '<br>' + 
+    'An fabricatie memorie:' + laptop.an_fabricatie_memorie + '<br>' + 'Pret memorie:' + laptop.pret_memorie + 'RON' + '<br>' + 'Rezolutie display:' + laptop.rezolutie_display +
+    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON' + '<br>' + 'Pret final:' + laptop.pret_memorie + laptop.pret_procesor + laptop.pret_rezolutie
+
+}
+        
+        let laptop = {
+            producator: "",
+            os_instalat: "",
+            procesor: {
+                model_procesor: "",
+                an_fabricatie_procesor: "",
+                pret_procesor: "",
+
+            },
+            memorie:{
+                memorie_ram:"",
+                an_fabricatie_memorie: "",
+                pret_memorie: "",
+
+            },
+            rezolutie:{
+                rezolutie_display: "",
+                an_fabricatie_rezolutie: "",
+                pret_rezolutie: "",
+
+            },
+
+            salveaza_laptop:function(){
+        this.producator = document.getElementById("prod").value
+        this.os_instalat = document.getElementById("os").value
+        this.model_procesor = document.getElementById("model").value
+        this.an_fabricatie_procesor = document.getElementById("fabProcesor").value
+        this.pret_procesor = document.getElementById("pretProcesor").value
+        this.memorie_ram = document.getElementById("memorieRam").value
+        this.an_fabricatie_memorie = document.getElementById("fabMemorie").value
+        this.pret_memorie = document.getElementById("pretMemorie").value
+        this.rezolutie_display = document.getElementById("rezolutieDisplay").value
+        this.an_fabricatie_rezolutie = document.getElementById("fabRezolutie").value
+        this.pret_rezolutie = document.getElementById("pretRezolutie").value
+       },
+      }
+    </script>
+</body>
+</html>
