@@ -6,6 +6,7 @@
     <title>Tema3</title>
 </head>
 <body>
+    <h1>Configurare Laptop</h1>
     <p>
         <input type="text" id="prod" placeholder="Producator"><br><br>
         <input type="text" id="os" placeholder="OS instalat"><br><br>
@@ -19,19 +20,18 @@
         <input type="number" id="fabRezolutie" placeholder="An fabricatie rezolutie"><br><br>
         <input type="number" id="pretRezolutie" placeholder="Pret rezolutie"><br><br>
     </p>
-    <p id="test"> </p>
+    <p id="corp_afisare"> </p>
     <button id="buton_salveaza" onclick="laptop.salveaza_laptop()">Salveaza</button>
     <button id="buton_afiseaza"  onclick="afiseaza()">Afiseaza!</button>
+
     <script>
    function afiseaza(){
-    document.getElementById("test").innerHTML =
+    document.getElementById("corp_afisare").innerHTML =
     "Producator:" + laptop.producator + '<br>' + 'OS instalat:' + laptop.os_instalat + '<br>' + 'Model procesor:' + laptop.model_procesor + '<br>' +
     'An fabricatie procesor:' + laptop.an_fabricatie_procesor + '<br>' + 'Pret procesor:' + laptop.pret_procesor + 'RON' + '<br>' + 'Memorie ram:' + laptop.memorie_ram + 'GB' + '<br>' + 
     'An fabricatie memorie:' + laptop.an_fabricatie_memorie + '<br>' + 'Pret memorie:' + laptop.pret_memorie + 'RON' + '<br>' + 'Rezolutie display:' + laptop.rezolutie_display +
-    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON' + '<br>' + 'Pret final:' + laptop.pret_memorie + laptop.pret_procesor + laptop.pret_rezolutie
-
-}
-        
+    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON'
+    }
         let laptop = {
             producator: "",
             os_instalat: "",
@@ -55,19 +55,21 @@
             },
 
             salveaza_laptop:function(){
-        this.producator = document.getElementById("prod").value
-        this.os_instalat = document.getElementById("os").value
-        this.model_procesor = document.getElementById("model").value
-        this.an_fabricatie_procesor = document.getElementById("fabProcesor").value
-        this.pret_procesor = document.getElementById("pretProcesor").value
-        this.memorie_ram = document.getElementById("memorieRam").value
-        this.an_fabricatie_memorie = document.getElementById("fabMemorie").value
-        this.pret_memorie = document.getElementById("pretMemorie").value
-        this.rezolutie_display = document.getElementById("rezolutieDisplay").value
-        this.an_fabricatie_rezolutie = document.getElementById("fabRezolutie").value
-        this.pret_rezolutie = document.getElementById("pretRezolutie").value
-       },
-      }
+                this.producator = document.getElementById("prod").value
+                this.os_instalat = document.getElementById("os").value
+                this.model_procesor = document.getElementById("model").value
+                this.an_fabricatie_procesor = document.getElementById("fabProcesor").value
+                this.pret_procesor = document.getElementById("pretProcesor").value
+                this.memorie_ram = document.getElementById("memorieRam").value
+                this.an_fabricatie_memorie = document.getElementById("fabMemorie").value
+                this.pret_memorie = document.getElementById("pretMemorie").value
+                this.rezolutie_display = document.getElementById("rezolutieDisplay").value
+                this.an_fabricatie_rezolutie = document.getElementById("fabRezolutie").value
+                this.pret_rezolutie = document.getElementById("pretRezolutie").value
+            },
+        }
+        let suma = Number.parseInt (pret_memorie) + Number.parseInt (pret_procesor) + Number.parseInt (pret_rezolutie)
+                alert (suma)
     </script>
 </body>
 </html>
