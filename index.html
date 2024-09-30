@@ -8,21 +8,31 @@
 <body>
     <h1>Configurare Laptop</h1>
     <p>
+        <label for="prod">Producator:</label>
         <input type="text" id="prod" placeholder="Producator"><br><br>
+        <label for="os">OS instalat:</label>
         <input type="text" id="os" placeholder="OS instalat"><br><br>
+        <label for="model">Model Procesor:</label>
         <input type="text" id="model" placeholder="Model Procesor"><br><br>
+        <label for="fabProcesor">An fabricatie procesor:</label>
         <input type="number" id="fabProcesor" placeholder="An fabricatie procesor"><br><br>
-        <input type="number" id="pretProcesor" placeholder="Pret procesor"><br><br>
+        <label for="pretProcesor">Pret procesor:</label>
+        <input type="number" oninput="buton_activ()" id="pretProcesor" placeholder="Pret procesor"><br><br>
+        <label for="memorieRam">Memorie ram:</label>
         <input type="number" id="memorieRam" placeholder="Memorie ram"><br><br>
+        <label for="fabMemorie">An fabricatie memorie</label>
         <input type="number" id="fabMemorie" placeholder="An fabricatie memorie"><br><br>
-        <input type="number" id="pretMemorie" placeholder="Pret memorie"><br><br>
+        <label for="pretMemorie">Pret memorie</label>
+        <input type="number" oninput="buton_activ()" id="pretMemorie" placeholder="Pret memorie"><br><br>
+        <label for="rezolutieDisplay">Rezolutie display</label>
         <input type="number" id="rezolutieDisplay" placeholder="Rezolutie display"><br><br>
+        <label for="fabRezolutie">An fabricatie rezolutie</label>
         <input type="number" id="fabRezolutie" placeholder="An fabricatie rezolutie"><br><br>
-        <input type="number" id="pretRezolutie" placeholder="Pret rezolutie"><br><br>
+        <label for="pretRezolutie">Pret rezolutie</label>
+        <input type="number" oninput="buton_activ()" id="pretRezolutie" placeholder="Pret rezolutie"><br><br>
     </p>
     <p id="corp_afisare"> </p>
-    <button id="buton_salveaza" onclick="laptop.salveaza_laptop()">Salveaza</button>
-    <button id="buton_afiseaza"  onclick="afiseaza()">Afiseaza!</button>
+    <button id="buton_salveaza" disabled onclick="laptop.salveaza_laptop() ; afiseaza()">Calculeaza pret</button>
 
     <script>
    function afiseaza(){
@@ -30,7 +40,9 @@
     "Producator:" + laptop.producator + '<br>' + 'OS instalat:' + laptop.os_instalat + '<br>' + 'Model procesor:' + laptop.model_procesor + '<br>' +
     'An fabricatie procesor:' + laptop.an_fabricatie_procesor + '<br>' + 'Pret procesor:' + laptop.pret_procesor + 'RON' + '<br>' + 'Memorie ram:' + laptop.memorie_ram + 'GB' + '<br>' + 
     'An fabricatie memorie:' + laptop.an_fabricatie_memorie + '<br>' + 'Pret memorie:' + laptop.pret_memorie + 'RON' + '<br>' + 'Rezolutie display:' + laptop.rezolutie_display +
-    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON'
+    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON' + '<br>' +
+    'Pret final:' + laptop.pret_final
+    let suma = document.getElementById('suma_finala')
     }
         let laptop = {
             producator: "",
@@ -51,25 +63,34 @@
                 rezolutie_display: "",
                 an_fabricatie_rezolutie: "",
                 pret_rezolutie: "",
-
             },
 
             salveaza_laptop:function(){
                 this.producator = document.getElementById("prod").value
                 this.os_instalat = document.getElementById("os").value
                 this.model_procesor = document.getElementById("model").value
-                this.an_fabricatie_procesor = document.getElementById("fabProcesor").value
-                this.pret_procesor = document.getElementById("pretProcesor").value
-                this.memorie_ram = document.getElementById("memorieRam").value
-                this.an_fabricatie_memorie = document.getElementById("fabMemorie").value
-                this.pret_memorie = document.getElementById("pretMemorie").value
-                this.rezolutie_display = document.getElementById("rezolutieDisplay").value
-                this.an_fabricatie_rezolutie = document.getElementById("fabRezolutie").value
-                this.pret_rezolutie = document.getElementById("pretRezolutie").value
-            },
+                this.an_fabricatie_procesor = Number(document.getElementById("fabProcesor").value)
+                this.pret_procesor = Number(document.getElementById("pretProcesor").value)
+                this.memorie_ram = Number(document.getElementById("memorieRam").value)
+                this.an_fabricatie_memorie = Number(document.getElementById("fabMemorie").value)
+                this.pret_memorie = Number(document.getElementById("pretMemorie").value)
+                this.rezolutie_display = Number(document.getElementById("rezolutieDisplay").value)
+                this.an_fabricatie_rezolutie = Number(document.getElementById("fabRezolutie").value)
+                this.pret_rezolutie = Number(document.getElementById("pretRezolutie").value)                
+            }
         }
-        let suma = Number.parseInt (pret_memorie) + Number.parseInt (pret_procesor) + Number.parseInt (pret_rezolutie)
-                alert (suma)
+        function buton_activ () {
+            let p1 = document.getElementById("pretProcesor").value.length
+            let p2 = document.getElementById("pretMemorie").value.length
+            let p3 = document.getElementById("pretRezolutie").value.length
+
+            if (p1 > 0 && p2 > 0 && p3 > 0) {
+                document.getElementById("buton_salveaza").disabled = false
+            }
+        }
+
+        //let suma = Number.parseInt (pret_memorie) + Number.parseInt (pret_procesor) + Number.parseInt (pret_rezolutie)
+                //alert (suma)
     </script>
 </body>
 </html>
