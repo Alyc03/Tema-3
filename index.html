@@ -32,18 +32,10 @@
         <input type="number" oninput="buton_activ()" id="pretRezolutie" placeholder="Pret rezolutie"><br><br>
     </p>
     <p id="corp_afisare"> </p>
+    <p id="test1"></p>
     <button id="buton_salveaza" disabled onclick="laptop.salveaza_laptop() ; afiseaza()">Calculeaza pret</button>
 
     <script>
-   function afiseaza(){
-    document.getElementById("corp_afisare").innerHTML =
-    "Producator:" + laptop.producator + '<br>' + 'OS instalat:' + laptop.os_instalat + '<br>' + 'Model procesor:' + laptop.model_procesor + '<br>' +
-    'An fabricatie procesor:' + laptop.an_fabricatie_procesor + '<br>' + 'Pret procesor:' + laptop.pret_procesor + 'RON' + '<br>' + 'Memorie ram:' + laptop.memorie_ram + 'GB' + '<br>' + 
-    'An fabricatie memorie:' + laptop.an_fabricatie_memorie + '<br>' + 'Pret memorie:' + laptop.pret_memorie + 'RON' + '<br>' + 'Rezolutie display:' + laptop.rezolutie_display +
-    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON' + '<br>' +
-    'Pret final:' + laptop.pret_final
-    let suma = document.getElementById('suma_finala')
-    }
         let laptop = {
             producator: "",
             os_instalat: "",
@@ -76,9 +68,18 @@
                 this.pret_memorie = Number(document.getElementById("pretMemorie").value)
                 this.rezolutie_display = Number(document.getElementById("rezolutieDisplay").value)
                 this.an_fabricatie_rezolutie = Number(document.getElementById("fabRezolutie").value)
-                this.pret_rezolutie = Number(document.getElementById("pretRezolutie").value)                
+                this.pret_rezolutie = Number(document.getElementById("pretRezolutie").value)
+                sum = this.pret_memorie + this.pret_procesor + this.pret_rezolutie
+                if(sum < 400){
+                    document.getElementById("test1").innerHTML = 'pretul este verde'
+                }
+                else{
+                document.getElementById("test1").innerHTML = 'pretul este rosu'
+            }
+                console.log(sum)               
             }
         }
+
         function buton_activ () {
             let p1 = document.getElementById("pretProcesor").value.length
             let p2 = document.getElementById("pretMemorie").value.length
@@ -89,8 +90,40 @@
             }
         }
 
-        //let suma = Number.parseInt (pret_memorie) + Number.parseInt (pret_procesor) + Number.parseInt (pret_rezolutie)
-                //alert (suma)
+        function afiseaza(){
+    let print = document.getElementById("test1");
+    let corp_afisare = document.getElementById("corp_afisare")
+    corp_afisare.innerHTML ='Pret TOTAL: ' + sum
+    
+    if(sum < 400){
+        corp_afisare.style.color = 'green';
+    } 
+    else {
+        corp_afisare.style.color = 'red';
+    }
+
+    let t1 = laptop.an_fabricatie_display;
+    let t2 = laptop.an_fabricatie_memorie;
+    let t3 = laptop.an_fabricatie_procesor;
+    let t4 = laptop.an_fabricatie_rezolutie;
+
+    let suma_an1 = t1 + t2 + t3;
+    let suma_an2 = t1 + t2 + t4;
+    let suma_an3 = t1 + t3 + t4;
+    let suma_an4 = t2 + t3 + t4;
+    
+    if(suma_an1 == 6072 || suma_an2 == 6072 || suma_an3 == 6072 || suma_an4 == 6072 ){
+        print.style.color = 'red';
+    }
+    else{
+        print.style.color = 'blue';
+    }
+    print.innerHTML =
+    "Producator:" + laptop.producator + '<br>' + 'OS instalat:' + laptop.os_instalat + '<br>' + 'Model procesor:' + laptop.model_procesor + '<br>' +
+    'An fabricatie procesor:' + laptop.an_fabricatie_procesor + '<br>' + 'Pret procesor:' + laptop.pret_procesor + 'RON' + '<br>' + 'Memorie ram:' + laptop.memorie_ram + 'GB' + '<br>' + 
+    'An fabricatie memorie:' + laptop.an_fabricatie_memorie + '<br>' + 'Pret memorie:' + laptop.pret_memorie + 'RON' + '<br>' + 'Rezolutie display:' + laptop.rezolutie_display +
+    '<br>' + 'An fabricatie rezolutie:' + laptop.an_fabricatie_rezolutie + '<br>' + 'Pret rezolutie:' + laptop.pret_rezolutie + 'RON'
+    }
     </script>
 </body>
 </html>
